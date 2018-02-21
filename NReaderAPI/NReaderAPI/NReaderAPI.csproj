@@ -196,6 +196,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\NewsItem.cs" />
+    <Compile Include="Models\NewsItemDetailDTO.cs" />
+    <Compile Include="Models\NewsItemDTO.cs" />
     <Compile Include="Models\NewsSite.cs" />
     <Compile Include="Models\NReaderAPIContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

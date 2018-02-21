@@ -11,23 +11,42 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using NReaderAPI.Models;
 
-namespace NReaderAPI.Controllers
+namespace NReader.Controllers
 {
     public class NewsItemsController : ApiController
     {
         private NReaderAPIContext db = new NReaderAPIContext();
 
         // GET: api/NewsItems
-        public IQueryable<NewsItem> GetNewsItems()
+        public IQueryable<NewsItemDTO> GetNewsItems()
         {
-            return db.NewsItems;
+            var newsItems = from n in db.NewsItems
+                            select new NewsItemDTO()
+                            {
+                                Id = n.Id,
+                                Title = n.Title,
+                                Description = n.Description,
+                                NewsSiteName = n.NewsSite.Name
+                            };
+            return newsItems;
         }
 
         // GET: api/NewsItems/5
-        [ResponseType(typeof(NewsItem))]
+        [ResponseType(typeof(NewsItemDetailDTO))]
         public async Task<IHttpActionResult> GetNewsItem(int id)
         {
-            NewsItem newsItem = await db.NewsItems.FindAsync(id);
+            var newsItem = await db.NewsItems.Include(n => n.NewsSite).Select(n =>
+                new NewsItemDetailDTO()
+                {
+                    Id = n.Id,
+                    Title = n.Title,
+                    Description = n.Description,
+                    PublicationDate = n.PublicationDate,
+                    ArticleUrl = n.ArticleUrl,
+                    PicUrl = n.PicUrl,
+                    NewsSiteName = n.NewsSite.Name
+                }).SingleOrDefaultAsync(n => n.Id == id);
+
             if (newsItem == null)
             {
                 return NotFound();
