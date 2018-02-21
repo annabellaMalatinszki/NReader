@@ -20,5 +20,7 @@ namespace NReaderAPI.Models
         }
 
         public System.Data.Entity.DbSet<NReaderAPI.Models.NewsSite> NewsSites { get; set; }
+
+        public System.Data.Entity.DbSet<NReaderAPI.Models.NewsItem> NewsItems { get; set; }
     }
 }
