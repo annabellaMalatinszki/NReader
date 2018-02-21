@@ -4,6 +4,7 @@ namespace NReaderAPI.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using NReaderAPI.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<NReaderAPI.Models.NReaderAPIContext>
     {
