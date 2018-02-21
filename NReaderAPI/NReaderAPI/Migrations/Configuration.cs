@@ -27,6 +27,12 @@ namespace NReaderAPI.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.NewsSites.AddOrUpdate(x => x.Id,
+                new NewsSite() { Id = 1, Name = "HVG", RSSUrl = "http://hvg.hu/rss", LogoUrl = "http://hvg.hu/Content/redesign/i/hvg-hu-logo.svg" },
+                new NewsSite() { Id = 2, Name = "Index", RSSUrl = "https://index.hu/24ora/rss/", LogoUrl = "https://index.hu/assets/images/rss_logo.gif" },
+                new NewsSite() { Id = 3, Name = "444", RSSUrl = "https://444.hu/feed", LogoUrl = "https://badog.blogstar.hu/pages/badog/contents/blog/20875/pics/14423241544672269_original.png" }
+                );
         }
     }
 }
