@@ -23,6 +23,12 @@ namespace NReaderAPI.Models
 
         public string PicUrl { get; set; }
 
+        // Foreign key
+        public int NewsSiteId { get; set; }
+
+        // Navigation property
+        public NewsSite NewsSite { get; set; }
+
         public NewsItem() { }
 
         public NewsItem(string title, string description, string publicationDate, string articleUrl, string picUrl)
