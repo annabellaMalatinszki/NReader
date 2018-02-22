@@ -37,10 +37,41 @@ namespace NReaderAPI.Models
             var results2 = await Task.WhenAll(tasks2);
         }
 
-        static void GetNewsItemsFromRSSAsync(string url)
+        static List<NewsItem> GetNewsItemsFromRSSAsync(string url)
         {
             // Parse the file at the url and create NewsItem object from the xml.
-            
+            List<NewsItem> newsToAdd = new List<NewsItem>();
+
+            XmlDocument doc = new XmlDocument();
+            XmlNodeList nodes = doc.SelectNodes("rss/channel/item");
+
+            doc.Load(url);
+            foreach (XmlNode node in nodes)
+            {
+                NewsItem newsItem = new NewsItem();
+
+                XmlNode subNode = node.SelectSingleNode("title");
+                newsItem.Title = subNode != null ? subNode.InnerText : "";
+
+                subNode = node.SelectSingleNode("description");
+                newsItem.Description = subNode != null ? subNode.InnerText : "";
+
+                subNode = node.SelectSingleNode("pubDate");
+                newsItem.PublicationDate = subNode != null ? subNode.InnerText : "";
+
+                subNode = node.SelectSingleNode("link");
+                newsItem.ArticleUrl = subNode != null ? subNode.InnerText : "";
+
+                subNode = node.SelectSingleNode("enclosure");
+                newsItem.PicUrl = subNode != null ? subNode.InnerText : "";
+
+                // this should be a bit more sophisticated right there, but will do for now.
+                newsItem.NewsSiteId = 1;
+
+                newsToAdd.Add(newsItem);
+            }
+
+            return newsToAdd;
         }
 
         private static List<string> GetUrls()
