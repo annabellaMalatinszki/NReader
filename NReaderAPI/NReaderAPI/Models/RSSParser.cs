@@ -86,10 +86,17 @@ namespace NReaderAPI.Models
             ;
         }
 
-        static async void InsertToDatabaseAsync(List<NewsItem> newsList)
+        static async Task<string> InsertToDatabaseAsync(List<NewsItem> newsList)
         {
-            // TODO: Here you should put the new NewsItems into the database.
+            // Here you should put the new NewsItems into the database.
+            NReaderAPIContext db = new NReaderAPIContext();
 
+            foreach (NewsItem newsItem in newsList)
+            {
+                db.NewsItems.Add(newsItem);
+                await db.SaveChangesAsync();
+            }
+            return "ok";
         }
 
     }
