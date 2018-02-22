@@ -93,6 +93,10 @@ namespace NReaderAPI.Models
 
             foreach (NewsItem newsItem in newsList)
             {
+                if(db.NewsItems.Any(n => n.Description == newsItem.Description))
+                {
+                    continue;
+                }
                 db.NewsItems.Add(newsItem);
                 await db.SaveChangesAsync();
             }
