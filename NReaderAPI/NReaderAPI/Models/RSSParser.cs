@@ -43,10 +43,16 @@ namespace NReaderAPI.Models
             
         }
 
-        private static void GetUrls()
+        private static List<string> GetUrls()
         {
+            List<string> urls = new List<string>();
             // TODO: Here you should retrieve the urls of the sites that are to be checked from the database.
-;
+
+            // For now, here is some mock data:
+            urls.Add("http://hvg.hu/rss");
+            urls.Add("https://index.hu/24ora/rss/");
+            return urls;
+            ;
         }
 
         static async void InsertToDatabaseAsync(List<NewsItem> newsList)
