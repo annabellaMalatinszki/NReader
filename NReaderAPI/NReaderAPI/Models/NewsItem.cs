@@ -10,6 +10,7 @@ namespace NReaderAPI.Models
 {
     public class NewsItem
     {
+        private static int idCounter = 5;
         public int Id { get; set; }
         [Required]
 
@@ -29,10 +30,15 @@ namespace NReaderAPI.Models
         // Navigation property
         public NewsSite NewsSite { get; set; }
 
-        public NewsItem() { }
+        public NewsItem() {
+            Id = idCounter;
+            idCounter++;
+        }
 
         public NewsItem(string title, string description, string publicationDate, string articleUrl, string picUrl)
         {
+            Id = idCounter;
+            idCounter++;
             Title = title;
             Description = description;
             PublicationDate = ParseDate(publicationDate);
