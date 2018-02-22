@@ -33,7 +33,15 @@ class Controller {
         req.send(params);
     }
 
+    load() {
+        const state = this._activeState;
+        this.sendAjax("api/NewsItems", Controller.GET, null, function (event) {
 
+            const respObj = JSON.parse(event.target.response);
+
+            this.view.showNewsItems(respObj);
+        });
+    }
 }
 
 const view = new View();
