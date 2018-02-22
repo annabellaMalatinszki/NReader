@@ -200,6 +200,7 @@
     <Compile Include="Models\NewsItemDTO.cs" />
     <Compile Include="Models\NewsSite.cs" />
     <Compile Include="Models\NReaderAPIContext.cs" />
+    <Compile Include="Models\RSSParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
