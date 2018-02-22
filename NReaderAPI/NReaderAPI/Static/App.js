@@ -4,7 +4,21 @@
         this.$newsItems = document.querySelector('#news-items');
         this.$newsfeed = document.querySelector('#newsfeed');
     }
+    showNewsItems(items) {
+        this.$newsItems.innerHTML = '';
 
+        for (let item of items) {
+            let newsItemBox = document.querySelector('#news-item-template');
+            let clone = document.importNode(newsItemBox.content, true);
+
+            clone.querySelector('li').dataset.id = item.Id;
+            clone.querySelector('.news-item-title').innerHTML = item.Title;
+            clone.querySelector('.news-item-description').innerHTML = item.Description;
+            clone.querySelector('.news-item-news-site-name').innerHTML = item.NewsSiteName;
+
+            this.$newsItems.appendChild(clone);
+        }
+    }
 }
 
 class Controller {
