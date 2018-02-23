@@ -82,6 +82,7 @@ namespace NReaderAPI.Models
             // For now, here is some mock data:
             urls.Add("http://hvg.hu/rss");
             urls.Add("https://index.hu/24ora/rss/");
+
             return urls;
             ;
         }
@@ -100,6 +101,7 @@ namespace NReaderAPI.Models
                 db.NewsItems.Add(newsItem);
                 await db.SaveChangesAsync();
             }
+
             return "ok";
         }
 
