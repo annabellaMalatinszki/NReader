@@ -42,3 +42,32 @@ textarea {
 footer p {
     text-align: center;
 }
+
+#news-items {
+    list-style-type: none;
+}
+
+
+
+a, a:link:active, a:link{
+    text-decoration: none;
+    color: royalblue;
+}
+
+a:hover {
+    color: midnightblue;
+}
+
+.news-list-item {
+    margin-top: 15px;
+    padding: 15px;
+    border: ridge;
+    border-color: gainsboro;
+    border-radius: 10px;
+    border-top: none;
+    border-left: none;
+}
+
+#newsfeed {
+    margin-top: 40px;
+}

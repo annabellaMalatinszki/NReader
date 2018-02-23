@@ -18,14 +18,17 @@ namespace NReader.Controllers
         private NReaderAPIContext db = new NReaderAPIContext();
 
         // GET: api/NewsItems
-        public IQueryable<NewsItemDTO> GetNewsItems()
+        public IQueryable<NewsItemDetailDTO> GetNewsItems()
         {
             var newsItems = from n in db.NewsItems
-                            select new NewsItemDTO()
+                            select new NewsItemDetailDTO()
                             {
                                 Id = n.Id,
                                 Title = n.Title,
                                 Description = n.Description,
+                                PublicationDate = n.PublicationDate,
+                                ArticleUrl = n.ArticleUrl,
+                                PicUrl = n.PicUrl,
                                 NewsSiteName = n.NewsSite.Name
                             };
             return newsItems;

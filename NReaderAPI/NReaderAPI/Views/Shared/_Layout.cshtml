@@ -50,10 +50,13 @@
         @RenderSection("scripts", required: false)
 
         <template id="news-item-template">
-            <li>
-                <h3 class="news-item-title"></h3>
+            <li class="news-list-item">
+                <a class="news-item-link" href="#"><h3 class="news-item-title"></h3></a>
+                <h2 class="news-item-news-site-name"></h2>
+                <p class="news-item-pub-date"></p>
+                @*<img class="news-item-pic" src="#" alt="Alternate Text" />*@
                 <p class="news-item-description"></p>
-                <p class="news-item-news-site-name"></p>
+                
             </li>
         </template>
     </div>
