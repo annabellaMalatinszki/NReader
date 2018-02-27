@@ -18,11 +18,11 @@ namespace NReader.Controllers
         private NReaderAPIContext db = new NReaderAPIContext();
 
         // GET: api/NewsItems
-        public IQueryable<NewsItemDetailDTO> GetNewsItems()
+        public IQueryable<NewsItemDTO> GetNewsItems()
         {
             var newsItems = (from n in db.NewsItems
                              orderby n.PublicationDate descending
-                            select new NewsItemDetailDTO()
+                            select new NewsItemDTO()
                             {
                                 Id = n.Id,
                                 Title = n.Title,
@@ -36,11 +36,11 @@ namespace NReader.Controllers
         }
 
         // GET: api/NewsItems/5
-        [ResponseType(typeof(NewsItemDetailDTO))]
+        [ResponseType(typeof(NewsItemDTO))]
         public async Task<IHttpActionResult> GetNewsItem(int id)
         {
             var newsItem = await db.NewsItems.Include(n => n.NewsSite).Select(n =>
-                new NewsItemDetailDTO()
+                new NewsItemDTO()
                 {
                     Id = n.Id,
                     Title = n.Title,
