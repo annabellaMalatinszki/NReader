@@ -12,9 +12,11 @@
             let clone = document.importNode(newsItemBox.content, true);
 
             clone.querySelector('li').dataset.id = item.Id;
+            clone.querySelector('.news-item-news-site-name').innerHTML = item.NewsSiteName;
+            clone.querySelector('.news-item-pub-date').innerHTML = item.PublicationDate;
+            clone.querySelector('.news-item-link').setAttribute('href', item.ArticleUrl);
             clone.querySelector('.news-item-title').innerHTML = item.Title;
             clone.querySelector('.news-item-description').innerHTML = item.Description;
-            clone.querySelector('.news-item-news-site-name').innerHTML = item.NewsSiteName;
 
             this.$newsItems.appendChild(clone);
         }
