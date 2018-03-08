@@ -100,6 +100,11 @@ namespace NReaderAPI.Models
                 }
                 db.NewsItems.Add(newsItem);
                 await db.SaveChangesAsync();
+
+                //Clear all data from database
+                //var all = from c in db.NewsItems select c;
+                //db.NewsItems.RemoveRange(all);
+                //db.SaveChanges();
             }
 
             return "ok";
