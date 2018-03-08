@@ -394,6 +394,10 @@
     <Compile Include="Migrations\201802211423157_Initial.Designer.cs">
       <DependentUpon>201802211423157_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803081941027_Initial1.cs" />
+    <Compile Include="Migrations\201803081941027_Initial1.Designer.cs">
+      <DependentUpon>201803081941027_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\NewsItem.cs" />
     <Compile Include="Models\NewsItemDTO.cs" />
@@ -475,6 +479,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802211423157_Initial.resx">
       <DependentUpon>201802211423157_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081941027_Initial1.resx">
+      <DependentUpon>201803081941027_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
