@@ -14,5 +14,6 @@ namespace NReaderAPI.Models
         public string ArticleUrl { get; set; }
         public string PicUrl { get; set; }
         public string NewsSiteName { get; set; }
+        public string NewsSiteLogo { get; set; }
     }
 }
