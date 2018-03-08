@@ -21,7 +21,7 @@ namespace NReader.Controllers
         public IQueryable<NewsItemDTO> GetNewsItems()
         {
             var newsItems = from n in db.NewsItems
-                             orderby n.PublicationDate descending
+                            orderby n.PublicationDate descending
                             select new NewsItemDTO()
                             {
                                 Id = n.Id,
@@ -30,7 +30,8 @@ namespace NReader.Controllers
                                 PublicationDate = n.PublicationDate,
                                 ArticleUrl = n.ArticleUrl,
                                 PicUrl = n.PicUrl,
-                                NewsSiteName = n.NewsSite.Name
+                                NewsSiteName = n.NewsSite.Name,
+                                NewsSiteLogo = n.NewsSite.LogoUrl
                             };
             return newsItems;
         }
