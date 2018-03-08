@@ -20,7 +20,7 @@ namespace NReader.Controllers
         // GET: api/NewsItems
         public IQueryable<NewsItemDTO> GetNewsItems()
         {
-            var newsItems = (from n in db.NewsItems
+            var newsItems = from n in db.NewsItems
                              orderby n.PublicationDate descending
                             select new NewsItemDTO()
                             {
@@ -31,7 +31,7 @@ namespace NReader.Controllers
                                 ArticleUrl = n.ArticleUrl,
                                 PicUrl = n.PicUrl,
                                 NewsSiteName = n.NewsSite.Name
-                            }).Take(5);
+                            };
             return newsItems;
         }
 
