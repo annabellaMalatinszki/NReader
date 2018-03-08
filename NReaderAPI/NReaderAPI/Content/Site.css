@@ -71,3 +71,12 @@ a, a:link:active, a:link {
 #newsfeed {
     margin-top: 40px;
 }
+
+.news-site-logo {
+    max-width: 80px;
+    border-radius: 10px;
+}
+
+.news-item-header {
+    display: inline-block;
+}
