@@ -65,8 +65,7 @@ namespace NReaderAPI.Models
                 subNode = node.SelectSingleNode("enclosure");
                 newsItem.PicUrl = subNode != null ? subNode.InnerText : "";
 
-                // this should be a bit more sophisticated right there, but will do for now.
-                newsItem.NewsSiteId = 1;
+                newsItem.NewsSiteId = GetNewsSiteId(url);
 
                 newsToAdd.Add(newsItem);
             }
@@ -74,14 +73,21 @@ namespace NReaderAPI.Models
             return newsToAdd;
         }
 
+        private static int GetNewsSiteId(string url)
+        {
+            NReaderAPIContext db = new NReaderAPIContext();
+
+            int newsSiteId = db.NewsSites.FirstOrDefault(n => n.RSSUrl == url).Id;
+
+            return newsSiteId;
+        }
+
         private static List<string> GetUrls()
         {
-            List<string> urls = new List<string>();
-            // TODO: Here you should retrieve the urls of the sites that are to be checked from the database.
+            NReaderAPIContext db = new NReaderAPIContext();
 
-            // For now, here is some mock data:
-            urls.Add("http://hvg.hu/rss");
-            urls.Add("https://index.hu/24ora/rss/");
+            // Retrieve the urls of the sites that are to be checked from the database.
+            var urls = (from x in db.NewsSites select x.RSSUrl).ToList();
 
             return urls;
             ;
@@ -101,9 +107,14 @@ namespace NReaderAPI.Models
                 db.NewsItems.Add(newsItem);
                 await db.SaveChangesAsync();
 
-                //Clear all data from database
+                //Clear all NewsItem data from database
                 //var all = from c in db.NewsItems select c;
                 //db.NewsItems.RemoveRange(all);
+                //db.SaveChanges();
+
+                //Clear all NewsSite data from database
+                //var all = from c in db.NewsSites select c;
+                //db.NewsSites.RemoveRange(all);
                 //db.SaveChanges();
             }
 
