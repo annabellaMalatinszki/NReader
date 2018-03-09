@@ -6,66 +6,21 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Static/App.js" defer></script>
-    @*<script src="~/Static/Controller.js" defer></script>
-    <script src="~/Static/View.js" defer></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 </head>
 <body>
-    <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid align">
-                <div class="col-md-3">
-                    <div class="navbar-header">
-                        <img src="~/NReaderLogo.png" id="logo" alt="NReader" />
-                    </div>
-                </div>
-                <div class="col-sm-6 search-container">
-                    <form class="navbar-form" action="/" method="post">
-                        <input type="text" class="form-control" id="searchbar" placeholder="Search..." />
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="nav navbar-nav navbar-right" id="navbar-login">
-                        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="tutorial">
-            <div id="content"></div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
-            <script src="@Url.Content("~/Scripts/Tutorial.jsx")"></script>
-        </div>
-    </div>
+
     <div class="container body-content">
         @RenderBody()
     </div>
-    <div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - NReader</p>
-        </footer>
-    </div>
 
+    <script src="@Url.Content("~/Scripts/index.jsx")"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <template id="news-item-template">
-        <li class="news-list-item">
-            <a class="news-item-link" href="#" target="_blank"><h3 class="news-item-title"></h3></a>
-            <h2 class="news-item-news-site-name"></h2>
-            <p class="news-item-pub-date"></p>
-            @*<img class="news-item-pic" src="#" alt="Alternate Text" />*@
-            <p class="news-item-description"></p>
-        </li>
-    </template>
 
 </body>
 </html>
